@@ -1,0 +1,47 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    text-align: center;
+    font-size: 25px;
+    border: black solid;
+    color: blue;
+}
+
+section {
+    font-size: 30px;
+    text-align: center;
+    margin-top: 10%;
+}
+
+#PartieQuestion {
+    border: solid black;
+}
+
+#Question {
+    text-align: center;
+    font-size: 80px;
+    color: red;
+}
+
+#PartieReponse {
+    border: black solid;
+    margin-top: 1%;
+    color: blue;
+}
+
+#DeuxPreReponse {
+    display: inline-block;
+    margin-right: 50%;
+}
+
+#Deuxieme, #Quatrieme {
+    margin-top: 50%;
+
+}
+
+#DeuxDerReponse {
+    display: inline-block;
+}

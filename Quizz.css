@@ -13,11 +13,16 @@ header {
 section {
     font-size: 30px;
     text-align: center;
-    margin-top: 10%;
+    margin-top: 3%;
+}
+
+#Temps {
+    font-size: 40px;
 }
 
 #PartieQuestion {
     border: solid black;
+    margin-top: 3%;
 }
 
 #Question {
@@ -28,7 +33,7 @@ section {
 
 #PartieReponse {
     border: black solid;
-    margin-top: 1%;
+    margin-top: 2%;
     color: blue;
 }
 
@@ -37,7 +42,7 @@ section {
     margin-right: 50%;
 }
 
-#Deuxieme, #Quatrieme {
+#Prop2, #Prop4 {
     margin-top: 50%;
 
 }

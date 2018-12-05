@@ -13,7 +13,7 @@ header {
 section {
     font-size: 30px;
     text-align: center;
-    margin-top: 3%;
+    margin-top: 2%;
 }
 
 #Temps {
@@ -22,12 +22,12 @@ section {
 
 #PartieQuestion {
     border: solid black;
-    margin-top: 3%;
+    margin-top: 2%;
 }
 
 #Question {
     text-align: center;
-    font-size: 80px;
+    font-size: 60px;
     color: red;
 }
 
@@ -35,16 +35,12 @@ section {
     border: black solid;
     margin-top: 2%;
     color: blue;
+    font-size: 25px;
 }
 
 #DeuxPreReponse {
     display: inline-block;
     margin-right: 50%;
-}
-
-#Prop2, #Prop4 {
-    margin-top: 50%;
-
 }
 
 #DeuxDerReponse {

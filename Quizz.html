@@ -5,12 +5,17 @@
     <title>Title</title>
     <link rel="stylesheet" href="Quizz.css">
     <script src="lib/jquery.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 </head>
 <body>
 
 <header id="Titre">
 
-    <h1> Quizz ! Theme : Foot </h1>
+    <h2> Quizz, sur le Thème du Foot </h2>
+
+    <button id="Play"> Démarrer </button>
+
+    <button id="Reset"> Réinitialiser </button>
 
 </header>
 
@@ -18,11 +23,11 @@
 
     <div id="PartieQuizz">
 
-        <span id="Temps"> 00 : 00 </span>
+        <span id="Temps"></span>
 
         <div id="PartieQuestion">
 
-            <h1 id="Question"> Question ? </h1>
+            <h1 id="Question"></h1>
 
         </div>
 
@@ -30,17 +35,17 @@
 
             <div id="DeuxPreReponse">
 
-                <p id="Prop1"> Réponse A : </p>
+                <p id="Prop1"></p>
 
-                <p id="Prop2"> Réponse B : </p>
+                <p id="Prop2"></p>
 
             </div>
 
             <div id="DeuxDerReponse">
 
-                <p id="Prop3"> Réponse C : </p>
+                <p id="Prop3"></p>
 
-                <p id="Prop4"> Réponse D : </p>
+                <p id="Prop4"></p>
 
             </div>
 
@@ -51,13 +56,13 @@
 
     <div id="PartieResultats">
 
-        <h1> Vous avez fini le quizz ! </h1>
+        <p id="ResTemps"></p>
 
-        <h2 id="ResBonne"> Vous avez trouver ** bonnes réponses </h2>
+        <p id="ResBonne"></p>
 
-        <h2 id="ResMauvaise"> Vous avez trouver ** mauvaises réponses </h2>
+        <p id="ResMauvaise"></p>
 
-        <h3 id="ResTemps"> Il vous a fallu ** minutes et ** secondes </h3>
+        <p id="MauvaiseReponse"></p>
 
     </div>
 

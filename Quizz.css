@@ -5,44 +5,82 @@ body {
 
 header {
     text-align: center;
-    font-size: 25px;
-    border: black solid;
-    color: blue;
+    font-size: 1.5vw;
+    text-decoration: underline;
+    color: darkblue;
 }
 
 section {
-    font-size: 30px;
+    font-size: 1.8vw;
     text-align: center;
-    margin-top: 2%;
+    margin-top: 1%;
 }
 
 #Temps {
-    font-size: 40px;
+    font-size: 2.5vw;
+    color: white;
+    border: solid white;
+    border-radius: 10px;
+    background: crimson;
 }
 
 #PartieQuestion {
     border: solid black;
+    border-radius: 20px;
     margin-top: 2%;
+    background: brown;
 }
 
 #Question {
     text-align: center;
-    font-size: 60px;
-    color: red;
+    font-size: 2.5vw;
+    color: white;
 }
 
 #PartieReponse {
-    border: black solid;
     margin-top: 2%;
     color: blue;
-    font-size: 25px;
+    font-size: 1.5vw;
 }
 
-#DeuxPreReponse {
-    display: inline-block;
-    margin-right: 50%;
+#Prop1, #Prop2, #Prop3, #Prop4 {
+    color: white;
+    border: black solid;
+    border-radius: 20px;
+    background: brown;
 }
 
-#DeuxDerReponse {
-    display: inline-block;
+#PartieResultats {
+    border: white solid;
+    border-radius: 20px;
+    background: brown;
+    color: white;
+    font-size: 1.25vw;
+}
+
+@media only screen and (max-width: 840px) {
+
+    body {
+
+        width: 100%;
+
+        height: 100%;
+
+    }
+
+    h1  {
+        font-size: 5vh;
+    }
+
+    h2 {
+
+        font-size: 3.8vh;
+
+    }
+
+    p {
+
+        font-size: 2.5vh;
+
+    }
 }

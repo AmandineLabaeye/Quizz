@@ -1,11 +1,55 @@
 let Question = [
 
     { // Question 1
+        "question": "De combien de joueurs se <br> composent une équipe de football ?"
+    },
+
+    { // Question 2
+        "question": "Combien faut-il de carton  <br> jaune pour être expulser du terrain ?"
+    },
+
+    { // Question 3
+        "question": "Quel équipements n'est <br> pas adapté au foot ?"
+    },
+
+    { // Question 4
+        "question": "Combien mesure la cage <br> de but (en mètres) ?"
+    },
+
+    { // Question 5
+        "question": "Quelle est la circonférence <br> d'un ballon (en centimètres)?"
+    },
+
+    { // Question 6
+        "question": "Dans quelle zone se <br> tire un penalty ?"
+    },
+
+    { // Question 7
+        "question": "Combien mesure un terrain <br> de foot (en mètres) ?"
+    },
+
+    { // Question 8
+        "question": "A combien de metre <br> se tire un penalty ?"
+    },
+
+    { // Question 9
+        "question": "Combien pèse <br> un ballon (en grammes) ?"
+    },
+
+    { // Question 10
+        "question": "Combien il y a t-il d'arbitre sur <br> le terrain lors d'un match ?"
+    }
+
+];
+
+let TableauQuestion2 = [
+
+    { // Question 1
         "question": "De combien de joueurs se composent une équipe de football ?"
     },
 
     { // Question 2
-        "question": "Combien faut-il de carton jaune pour être expulser du terrain ?"
+        "question": "Combien faut-il de carton  jaune pour être expulser du terrain ?"
     },
 
     { // Question 3
@@ -13,11 +57,11 @@ let Question = [
     },
 
     { // Question 4
-        "question": "Combien mesure la cage de but (en metres) ?"
+        "question": "Combien mesure la cage de but (en mètres) ?"
     },
 
     { // Question 5
-        "question": "Quelle est la circonférence d'un ballon (en centimetre)?"
+        "question": "Quelle est la circonférence d'un ballon (en centimètres)?"
     },
 
     { // Question 6
@@ -25,7 +69,7 @@ let Question = [
     },
 
     { // Question 7
-        "question": "Combien mesure un terrain de foot (en metre) ?"
+        "question": "Combien mesure un terrain de foot (en mètres) ?"
     },
 
     { // Question 8
@@ -128,80 +172,202 @@ let Reponse = [
 
 $("#PartieResultats").hide();
 
+$("#PartieQuizz").hide();
+
+$("#Reset").hide();
+
+$("#Play").click(function () {
+
+    $("#PartieQuizz").show();
+
+    Timer();
+
+    $("#Play").hide();
+
+});
+
+
 let Index = 0;
 
 let BonneRep = 0;
 
 let MauvaiseRep = 0;
 
-var Click = 0;
+let Click = 0;
+
+let secondes = "00";
+
+let minutes = "00";
+
+let Times;
 
 let Selector;
 
-$("#Question").html(Question[0].question);
+function Play() {
 
-$("#Prop1").html(Reponse[0].Rep0);
+    $("#Question").html(Question[0].question);
 
-$("#Prop2").html(Reponse[0].Rep1);
+    $("#Prop1").html(Reponse[0].Rep0);
 
-$("#Prop3").html(Reponse[0].Rep2);
+    $("#Prop2").html(Reponse[0].Rep1);
 
-$("#Prop4").html(Reponse[0].Rep3);
+    $("#Prop3").html(Reponse[0].Rep2);
+
+    $("#Prop4").html(Reponse[0].Rep3);
 
 
-for (let i = 1; i <= 4; i++) {
+    for (let i = 1; i <= 4; i++) {
 
-    Selector = $("#Prop" + i);
+        Selector = $("#Prop" + i);
 
-    Selector.click(function () {
+        Selector.click(function () {
 
-        if (Reponse[Index].value == $("#Prop" + i).html()) {
+            if (Reponse[Index].value == $("#Prop" + i).html()) {
 
-            BonneRep++;
-            console.log(BonneRep);
+                BonneRep++;
+                console.log(BonneRep);
 
-        } else {
+            } else {
 
-            MauvaiseRep++;
-            console.log(MauvaiseRep);
+                MauvaiseRep++;
+                console.log(MauvaiseRep);
 
-        }
+                $("#MauvaiseReponse").append(TableauQuestion2[Index].question + " La réponse était : " + Reponse[Index].value + "<br><br>");
 
-        Click++;
-        Index++;
-        console.log(Index);
-        console.log(Click);
+            }
 
-        if (Click > 9) {
+            Click++;
+            Index++;
+            console.log(Index);
+            console.log(Click);
 
-            $("#PartieQuizz").hide();
+            if (Click > 9) {
 
-            $("#PartieResultats").show();
+                $("#PartieQuizz").hide();
 
-            Resultats ();
+                $("#PartieResultats").show();
 
-        }
+                Resultats();
 
-        $("#Question").html(Question[Index].question);
+            }
 
-        $("#Prop1").html(Reponse[Index].Rep0);
+            $("#Question").html(Question[Index].question);
 
-        $("#Prop2").html(Reponse[Index].Rep1);
+            $("#Prop1").html(Reponse[Index].Rep0);
 
-        $("#Prop3").html(Reponse[Index].Rep2);
+            $("#Prop2").html(Reponse[Index].Rep1);
 
-        $("#Prop4").html(Reponse[Index].Rep3);
+            $("#Prop3").html(Reponse[Index].Rep2);
 
-    });
-    
+            $("#Prop4").html(Reponse[Index].Rep3);
+
+        });
+
+    }
+
 }
 
-function Resultats () {
+Play();
+
+function Timer() {
+
+    $("#Temps").html(minutes + " : " + secondes);
+
+    secondes++;
+
+    if (secondes == 60) {
+
+        minutes++;
+
+        secondes = "00";
+
+    }
+
+    Times = setTimeout(Timer, 1000);
+
+}
+
+function Resultats() {
 
     $("#ResBonne").html("Vous avez trouver " + BonneRep + " bonnes réponses ");
 
-    $("#ResMauvaise").html("Vous avez trouver " + MauvaiseRep + " mauvaises réponses ")
+    $("#ResMauvaise").html("Vous avez trouver " + MauvaiseRep + " mauvaises réponses ");
+
+    clearTimeout(Times);
+
+    $("#ResTemps").html("Il vous a fallu " + minutes + " minutes et " + secondes + " secondes");
+
+    minutes = "00";
+
+    secondes = "00";
+
+    $("#Reset").show();
+
+}
+
+function Reset() {
+
+    $("#PartieResultats").hide();
+
+    $("#PartieQuizz").hide();
+
+    $("#Reset").hide();
+
+    $("#Play").show();
+
+    $("#ResBonne").html("");
+
+    $("#ResMauvaise").html("");
 
     $("#ResTemps").html("");
 
+    $("#MauvaiseReponse").html("");
+
+
+    minutes = "00";
+
+    secondes = "00";
+
+    Index = 0;
+
+    BonneRep = 0;
+
+    MauvaiseRep = 0;
+
+    Click = 0;
+
+    $("#Question").html(Question[0].question);
+
+    $("#Prop1").html(Reponse[0].Rep0);
+
+    $("#Prop2").html(Reponse[0].Rep1);
+
+    $("#Prop3").html(Reponse[0].Rep2);
+
+    $("#Prop4").html(Reponse[0].Rep3);
+
+    for (let i = 1; i <= 4; i++) {
+
+        Selector.click(function () {
+
+            $("#Question").html(Question[Index].question);
+
+            $("#Prop1").html(Reponse[Index].Rep0);
+
+            $("#Prop2").html(Reponse[Index].Rep1);
+
+            $("#Prop3").html(Reponse[Index].Rep2);
+
+            $("#Prop4").html(Reponse[Index].Rep3);
+
+        });
+
+    }
+
 }
+
+$("#Reset").click(function () {
+
+    Reset();
+
+});

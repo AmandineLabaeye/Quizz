@@ -1,3 +1,4 @@
+// [FR] Tableau de question pour Jeux avec les 10 questions
 let Question = [
 
     { // Question 1
@@ -42,6 +43,7 @@ let Question = [
 
 ];
 
+// [FR] Tableau de question pour Ecran de résultats avec les 10 questions
 let TableauQuestion2 = [
 
     { // Question 1
@@ -86,6 +88,7 @@ let TableauQuestion2 = [
 
 ];
 
+// [FR] Tableau de réponse pour Jeux avec les 4 réponses + la value par question
 let Reponse = [
 
     { // Réponse Question 1 value == bonne réponse
@@ -113,11 +116,11 @@ let Reponse = [
     },
 
     { // Réponse Question 4 value == bonne réponse
-        value: "7.32 de long et 244 de hauteur",
-        "Rep0": "7.50 de long et 260 de hauteur",
-        "Rep1": "7.32 de long et 244 de hauteur",
-        "Rep2": "8.65 de long et 150 de hauteur",
-        "Rep3": "5.45 de long et 300 de hauteur"
+        value: "7.32 de long et 2.44 de hauteur",
+        "Rep0": "7.50 de long et 2.60 de hauteur",
+        "Rep1": "7.32 de long et 2.44 de hauteur",
+        "Rep2": "8.65 de long et 1.50 de hauteur",
+        "Rep3": "5.45 de long et 3.00 de hauteur"
     },
 
     { // Réponse Question 5 value == bonne réponse
@@ -170,74 +173,114 @@ let Reponse = [
 
 ];
 
+// [FR] Div Résultats est invisible au démarrage de la page
 $("#PartieResultats").hide();
 
+// [FR] Div Quizz est invisible au démarrage de la page
 $("#PartieQuizz").hide();
+
+// [FR] Seul le titre et le bouton démarrer sont affichés au démarrage de la page
 
 // $("#Reset").hide();
 
+// [FR] Evenement jQuery click sur le bouton demarrer qui fait
 $("#Play").click(function () {
 
-    $("#PartieQuizz").fadeIn(2000);
+    // [FR] Fait disparaitre le bouton play en animation
+    $("#Play").fadeOut(function () {
 
+        /* [FR] Apparaitre la div Quizz avec une animation pendant 2 secondes,
+                seulement quand le bouton play sera disparu */
+        $("#PartieQuizz").fadeIn(2000);
+
+    });
+
+    // [FR] Lance le chrono au clique
     Timer();
-
-    $("#Play").fadeOut();
 
 });
 
-
+// [FR] Variable Index à 0
 let Index = 0;
 
+// [FR] Variable des bonnes réponses à 0
 let BonneRep = 0;
 
+// [FR] Variable des mauvaises réponses à 0
 let MauvaiseRep = 0;
 
+// [FR]  Variable des cliques à 0
 let Click = 0;
 
+// [FR] Variable des secondes qui commence à 00
 let secondes = "00";
 
+// [FR] Variable des minutes qui commence à 00
 let minutes = "00";
 
+// [FR] Variable Times (setTimeOut du chrono)
 let Times;
 
+// [FR] Variable Selector (Pour éviter de réecrire un élément) Useless
 let Selector;
 
+// [FR] Fonction Jeu
 function Play() {
 
+    // [FR] On initialise la premiere question en dehors de la boucle avec l'index 0
     $("#Question").html(Question[0].question);
 
+    // [FR] On initialise la premiere proposition en dehors de la boucle avec l'index 0
     $("#Prop1").html(Reponse[0].Rep0);
 
+    // [FR] On initialise la deuxieme proposition en dehors de la boucle avec l'index 0
     $("#Prop2").html(Reponse[0].Rep1);
 
+    // [FR] On initialise la troisième proposition en dehors de la boucle avec l'index 0
     $("#Prop3").html(Reponse[0].Rep2);
 
+    // [FR] On initialise la quatrième proposition en dehors de la boucle avec l'index 0
     $("#Prop4").html(Reponse[0].Rep3);
 
-
+    // [FR] Boucle i = Nombre de proposition et i s'incrémente de 1 jusqu'a 4 maximum
     for (let i = 1; i <= 4; i++) {
 
+        /* [FR] Rappel de la variable Selector qui stock l'id de base des
+                4 proposition plus i  */
         Selector = $("#Prop" + i);
 
+        /* [FR] Fonction qui écoute le clique de la variable Selector
+                soit les 4 réponses, donc chaque clique effectuer sur une réponse sera
+                écouter */
         Selector.click(function () {
 
+            /* [FR] Si la valeur du value dans le tableau réponse
+             est égale au clique sur une réponse alors */
             if (Reponse[Index].value == $("#Prop" + i).html()) {
 
+                // [FR] On incrémente de 1 la variable BonneRep pour les dix questions
                 BonneRep++;
 
-            } else {
+            }
+            // [FR]  Sinon (Si les deux valeurs sont différentes alors)
+            else {
 
+                // [FR] On incrémente de 1 la variable MauvaiseRep pour les dix questions
                 MauvaiseRep++;
 
+                /* [FR] A chaque mauvaise réponse on récupere ca question + la bonne
+                réponse et on la stocke dans l'écran Résultats */
                 $("#MauvaiseReponse").append(TableauQuestion2[Index].question + " La réponse était : " + Reponse[Index].value + "<br><br>");
 
             }
 
+            // [FR]  On incrémente la variable Click de 1 à chaque clique
             Click++;
 
+            // [FR]  On incrémente la variable Index de 1 à chaque clique
             Index++;
 
+            // [FR] Si la variable Clique est supérieur à 9 alors
             if (Click > 9) {
 
                 $("#PartieQuizz").hide();
@@ -306,8 +349,6 @@ function Resultats() {
     // $("#Reset").fadeIn(2000);
 
 }
-
-
 
 
 /* function Reset() {

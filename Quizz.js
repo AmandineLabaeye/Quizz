@@ -113,11 +113,11 @@ let Reponse = [
     },
 
     { // Réponse Question 4 value == bonne réponse
-        value: "7.32 de long & 244 de hauteur",
-        "Rep0": "7.50 de long & 260 de hauteur",
-        "Rep1": "7.32 de long & 244 de hauteur",
-        "Rep2": "8.65 de long & 150 de hauteur",
-        "Rep3": "5.45 de long & 300 de hauteur"
+        value: "7.32 de long et 244 de hauteur",
+        "Rep0": "7.50 de long et 260 de hauteur",
+        "Rep1": "7.32 de long et 244 de hauteur",
+        "Rep2": "8.65 de long et 150 de hauteur",
+        "Rep3": "5.45 de long et 300 de hauteur"
     },
 
     { // Réponse Question 5 value == bonne réponse
@@ -137,11 +137,11 @@ let Reponse = [
     },
 
     { // Réponse Question 7 value == bonne réponse
-        value: "90 à 120 de long & 45 à 90 de large",
-        "Rep0": "90 à 120 de long & 45 à 90 de large",
-        "Rep1": "80 à 110 de long & 35 à 80 de large",
-        "Rep2": "100 à 130 de long & 55 à 100 de large",
-        "Rep3": "80 à 130 de long & 35 à 80 de large"
+        value: "90 à 120 de long et 45 à 90 de large",
+        "Rep0": "90 à 120 de long et 45 à 90 de large",
+        "Rep1": "80 à 110 de long et 35 à 80 de large",
+        "Rep2": "100 à 130 de long et 55 à 100 de large",
+        "Rep3": "80 à 130 de long et 35 à 80 de large"
     },
 
     { // Réponse Question 8 value == bonne réponse
@@ -174,15 +174,15 @@ $("#PartieResultats").hide();
 
 $("#PartieQuizz").hide();
 
-$("#Reset").hide();
+// $("#Reset").hide();
 
 $("#Play").click(function () {
 
-    $("#PartieQuizz").show();
+    $("#PartieQuizz").fadeIn(2000);
 
     Timer();
 
-    $("#Play").hide();
+    $("#Play").fadeOut();
 
 });
 
@@ -225,41 +225,43 @@ function Play() {
             if (Reponse[Index].value == $("#Prop" + i).html()) {
 
                 BonneRep++;
-                console.log(BonneRep);
 
             } else {
 
                 MauvaiseRep++;
-                console.log(MauvaiseRep);
 
                 $("#MauvaiseReponse").append(TableauQuestion2[Index].question + " La réponse était : " + Reponse[Index].value + "<br><br>");
 
             }
 
             Click++;
+
             Index++;
-            console.log(Index);
-            console.log(Click);
 
             if (Click > 9) {
 
                 $("#PartieQuizz").hide();
 
-                $("#PartieResultats").show();
+                $("#PartieResultats").slideDown(3000);
 
                 Resultats();
 
             }
 
-            $("#Question").html(Question[Index].question);
+            $("#PartieQuizz").fadeOut(1000, function () {
 
-            $("#Prop1").html(Reponse[Index].Rep0);
+                $("#Question").html(Question[Index].question);
 
-            $("#Prop2").html(Reponse[Index].Rep1);
+                $("#Prop1").html(Reponse[Index].Rep0);
 
-            $("#Prop3").html(Reponse[Index].Rep2);
+                $("#Prop2").html(Reponse[Index].Rep1);
 
-            $("#Prop4").html(Reponse[Index].Rep3);
+                $("#Prop3").html(Reponse[Index].Rep2);
+
+                $("#Prop4").html(Reponse[Index].Rep3);
+
+                $("#PartieQuizz").fadeIn(1000);
+            })
 
         });
 
@@ -301,19 +303,22 @@ function Resultats() {
 
     secondes = "00";
 
-    $("#Reset").show();
+    // $("#Reset").fadeIn(2000);
 
 }
 
-function Reset() {
 
-    $("#PartieResultats").hide();
+
+
+/* function Reset() {
+
+    $("#PartieResultats").slideUp(2000);
 
     $("#PartieQuizz").hide();
 
-    $("#Reset").hide();
+   //  $("#Reset").hide();
 
-    $("#Play").show();
+    $("#Play").fadeIn();
 
     $("#ResBonne").html("");
 
@@ -370,4 +375,4 @@ $("#Reset").click(function () {
 
     Reset();
 
-});
+}); */
